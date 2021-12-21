@@ -1,21 +1,25 @@
 
-body{
+div{
+
     display:flex;
-    justify-content: center;
-    margin: 33px;
+    flex-direction: column;
+    align-items: center;
     font-size:18px;
-   
+    width: 100vw; 
+
 }
+
 header{
+    
     display: flex;
     justify-content: space-around;
     align-items:center;
     width:100vw;
-  
+    height: 77px;
 }
 
 button {
-    height:5vh;
+ 
     background-color:transparent;
     border:none;
     font-size:18px;
