@@ -1,0 +1,13 @@
+body {
+    display:flex;
+    justify-content: center;
+    margin: 33px;
+   
+}
+button {
+    width: 100vw;
+    height:5vh;
+    background-color:transparent;
+    border:none;
+    font-size:18px;
+}

@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect, useContext} from "react";
+import Unity, { UnityContext } from "react-unity-webgl";
+import { useUserContext } from "./UserContext" 
+import "./styles.css"
+
+const unityContext = new UnityContext({
+  loaderUrl: "build/tezRocks.loader.js",
+  dataUrl: "build/tezRocks.data",
+  frameworkUrl: "build/tezRocks.framework.js",
+  codeUrl: "build/tezRocks.wasm",
+});
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const  app = useUserContext();
+  return(
+    <div>
+      <header>
+    <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
+        {!app.activeAccount ? "sync" :"unsync"}</button></header>
+     
+<body>   
+    <Unity unityContext={unityContext}   style={{
+        height: "640px",
+        width: "960px",
+        border: "2px solid black",
+        background: "grey",
+        objectFit:"contain"
+      }} />
+</body>
+    </div>)
 }
 
 export default App;
