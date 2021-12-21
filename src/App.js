@@ -18,7 +18,7 @@ function App() {
     <div>
       <header>
     <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
-        {app.activeAccount && `${app.address} - `};
+        {app.activeAccount && `${app.address} - `}
         {!app.activeAccount ? "sync" :"unsync"}</button></header>
      
 <body>   
