@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useUserContext } from "./UserContext";
+import Unity, { UnityContext } from "react-unity-webgl";
 import "./styles.css";
 
+const unityContext = new UnityContext({
+  loaderUrl: "build/tezRocks.loader.js",
+  dataUrl: "build/tezRocks.data",
+  frameworkUrl: "build/tezRocks.framework.js",
+  codeUrl: "build/tezRocks.wasm",
+});
 
 function App() {
 
@@ -18,7 +25,14 @@ function App() {
       </button>
 
     </header>   
-    
+    <div>
+    <Unity unityContext={unityContext} style={{
+        height: "auto",
+        width: "90vw",
+        aspectRatio: "4 / 3",
+      }} />
+    </div>
+  
     </>
     )
 }
