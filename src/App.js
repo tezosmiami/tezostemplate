@@ -18,15 +18,13 @@ function App() {
     <div>
       <header>
     <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
+        {app.activeAccount && `${app.address} - `};
         {!app.activeAccount ? "sync" :"unsync"}</button></header>
      
 <body>   
     <Unity unityContext={unityContext}   style={{
         height: "640px",
         width: "960px",
-        border: "2px solid black",
-        background: "grey",
-        objectFit:"contain"
       }} />
 </body>
     </div>)
