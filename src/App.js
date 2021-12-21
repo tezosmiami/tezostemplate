@@ -25,8 +25,10 @@ function App() {
         </div>
 <body>   
     <Unity unityContext={unityContext}   style={{
-        height: "640px",
-        width: "960px",
+        height: "auto",
+        width: "90vw",
+        aspectRatio: "4 / 3",
+    
       }} />
 </body>
     </div>)
