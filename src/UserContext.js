@@ -10,23 +10,23 @@ const options = {
  };
   
 const wallet = new BeaconWallet(options);
-const getActiveAccount = async() => {
-  if (wallet.client) return await wallet.client.getActiveAccount();
+// const getActiveAccount = async() => {
+//   if (wallet.client) return await wallet.client.getActiveAccount();
 
-};
+// };
 
 export const useUserContext = () => {
 
   const app = React.useContext(UserContext);
   if (!app) {
     throw new Error(
-      `You must call useRealmApp() inside of a <RealmAppProvider />`
+      `!app`
     );
   }
   return app;
 };
 
-export const UserContextProvider = ({ appId, children }) => {
+export const UserContextProvider = ({ children }) => {
   
   const [app, setApp] = React.useState("");
   const [address, setAddress] = useState("");
@@ -89,7 +89,7 @@ const [activeAccount, setActiveAccount] = useState("")
     
     setActiveAccount("")
     setAddress("");
-    window.location.reload();
+    //window.location.reload();
   }
 
   const wrapped = { ...app, tezos, logIn, logOut, activeAccount, address};
