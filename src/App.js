@@ -16,11 +16,13 @@ function App() {
     const  app = useUserContext();
   return(
     <div>
+      <div>
       <header>
+      {app.activeAccount && app.address}
     <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
-        {app.activeAccount && `${app.address} - `}
-        {!app.activeAccount ? "sync" :"unsync"}</button></header>
-     
+       
+        {!app.activeAccount ? "sync" : "unsync"}</button></header>
+        </div>
 <body>   
     <Unity unityContext={unityContext}   style={{
         height: "640px",
