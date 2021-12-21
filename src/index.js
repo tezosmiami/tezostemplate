@@ -6,7 +6,6 @@ import { UserContextProvider } from "./UserContext";
 
 
 ReactDOM.render(
-  
   <UserContextProvider>
     <App />
   </UserContextProvider>,

@@ -8,20 +8,19 @@ function App() {
   const  app = useUserContext();
   
   return(
-    <div>
-      <header>
+    <>
+    <header>
       
       {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
       
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
-      
-      {!app.activeAccount ? "sync" : "unsync"}</button></header>
-       
-      <body>   
-    
-      </body>
+      {!app.activeAccount ? "sync" : "unsync"}
+      </button>
 
-    </div>)
+    </header>   
+    
+    </>
+    )
 }
 
 export default App;
