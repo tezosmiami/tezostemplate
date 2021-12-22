@@ -68,7 +68,7 @@ public class WalletLoader : MonoBehaviour
                     Inventory.instance.currentWalletAddress = address;
                     
                     //Add the card data to the player inventory singleton
-                    Inventory.instance.ownedCards.Clear();
+                    //Inventory.instance.ownedCards.Clear();
                     for (int j = 0; j < amount; j++)
                     {
                         Inventory.instance.ownedCards.Add(id);
