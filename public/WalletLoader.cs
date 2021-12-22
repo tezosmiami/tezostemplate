@@ -25,16 +25,16 @@ public class WalletLoader : MonoBehaviour
 
     [SerializeField] private bool preventDevWalletUsage;
     
-    public void GetData(string address) => StartCoroutine(GetData_Coroutine(address));
+    
     private void GetWallet(string walletAddress)  => walletInputField.text = walletAddress;
-
-    private bool cheatOn = false;
+    public void GetData() => StartCoroutine(GetData_Coroutine());
+    private bool cheatOn = true;
  
-    IEnumerator GetData_Coroutine(string walletAddress)
+    IEnumerator GetData_Coroutine()
     {
         textFeedback.text = "Loading...";
         CheckCheat();
-        string uri = "https://api.tzkt.io/v1/bigmaps/"+contractID.ToString()+"/keys?key.address="+walletAddress+"&select=key,value";
+        string uri = "https://api.tzkt.io/v1/bigmaps/"+contractID.ToString()+"/keys?key.address="+walletInputField.text+"&select=key,value";
         using(UnityWebRequest request = UnityWebRequest.Get(uri))
         {
             yield return request.SendWebRequest();

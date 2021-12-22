@@ -4,10 +4,10 @@ import Unity, { UnityContext } from "react-unity-webgl";
 import "./styles.css";
 
 const unityContext = new UnityContext({
-  loaderUrl: "build/tezRocks.loader.js",
-  dataUrl: "build/tezRocks.data",
-  frameworkUrl: "build/tezRocks.framework.js",
-  codeUrl: "build/tezRocks.wasm",
+  loaderUrl: "build/tezRockz.loader.js",
+  dataUrl: "build/tezRockz.data",
+  frameworkUrl: "build/tezRockz.framework.js",
+  codeUrl: "build/tezRockz.wasm",
 });
 
 function App() {
