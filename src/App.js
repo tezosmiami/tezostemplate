@@ -23,7 +23,7 @@ function App() {
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
       {!app.activeAccount ? "sync" : "unsync"}
       </button>
-
+      {app.activeAccount && unityContext.send("WalletLoader", "GetWallet", app.address)}
     </header>   
     <div>
     <Unity unityContext={unityContext} style={{
