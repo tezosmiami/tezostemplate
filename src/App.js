@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useUserContext } from "./UserContext";
+import { useUserContext } from "./context/user-context";
+import { Routes, Route, Link } from "react-router-dom";
+import { About } from './pages/About'
+import { Home } from './pages/Home'
 import "./styles.css";
-
 
 function App() {
 
@@ -10,17 +11,22 @@ function App() {
   return(
     <>
     <header>
-      
-      {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
-      
+      {app.address && <a href={`https://hicetnunc.miami/tz/${app.address}`}
+      target="blank" rel="noopener noreferrer"> 
+        {app.name || app.address.substr(0, 5) + "..." + app.address.substr(-5)}
+      </a>}
+      <Link className='purple' to="/about">about</Link>
+      <Link className='purple' to="/">/</Link>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
-      {!app.activeAccount ? "sync" : "unsync"}
+        {!app.activeAccount ? "sync" : "unsync"}
       </button>
 
-    </header>   
-    
-    <div>
-
+    </header>      
+     <div>
+     <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
     
     </>

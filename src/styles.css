@@ -1,3 +1,8 @@
+html,
+body{
+    font-size:18px;
+    background-color: antiquewhite;
+}
 
 div{
 
@@ -10,7 +15,6 @@ div{
 }
 
 header{
-    
     display: flex;
     justify-content: space-around;
     align-items:center;
@@ -19,9 +23,17 @@ header{
 }
 
 button {
- 
+    color: orange;
     background-color:transparent;
     border:none;
     font-size:18px;
     cursor: pointer;
+}
+a{
+    color: green;
+    text-decoration:none;
+    cursor: pointer;
+}
+.purple{
+    color:purple;
 }

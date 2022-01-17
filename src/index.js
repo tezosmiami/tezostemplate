@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { UserContextProvider } from "./UserContext";
-
+import { UserContextProvider } from "./context/user-context";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
+  <BrowserRouter>
   <UserContextProvider>
     <App />
-  </UserContextProvider>,
+  </UserContextProvider>
+  </BrowserRouter>,
   document.getElementById("root"),
 );
