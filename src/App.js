@@ -32,8 +32,9 @@ function App() {
       </button>
 
       {app.activeAccount && unityContext.send("WalletLoader", "GetWallet", app.address)}
-
+      </header>  
     <div>
+      
     <Unity unityContext={unityContext} style={{
         height: "auto",
         width: "90vw",
@@ -42,7 +43,7 @@ function App() {
     </div>
   
 
-    </header>      
+    
      <div>
      <Routes>
         <Route path="/" element={<Home />} />
