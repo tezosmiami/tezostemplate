@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useUserContext } from "./UserContext";
+import React from "react";
+import { useUserContext } from "./context/user-context";
 import Unity, { UnityContext } from "react-unity-webgl";
+import { Link, Routes, Route } from "react-router-dom";
+import { About } from './pages/About'
+import { Home } from './pages/Home'
 import "./styles.css";
 
 const unityContext = new UnityContext({
@@ -10,6 +13,7 @@ const unityContext = new UnityContext({
   codeUrl: "build/tezRockz.wasm",
 });
 
+
 function App() {
 
   const  app = useUserContext();
@@ -17,14 +21,18 @@ function App() {
   return(
     <>
     <header>
-      
-      {app.activeAccount && app.address.substr(0, 5) + ". . ." + app.address.substr(-5)}
-      
+      {app.address && <a href={`https://hicetnunc.miami/tz/${app.address}`}
+      target="blank" rel="noopener noreferrer"> 
+        {app.name || app.address.substr(0, 5) + "..." + app.address.substr(-5)}
+      </a>}
+      <Link className='purple' to="/about">about</Link>
+      <Link className='purple' to="/">/</Link>
       <button onClick={() => !app.activeAccount ? app.logIn() : app.logOut()}> 
-      {!app.activeAccount ? "sync" : "unsync"}
+        {!app.activeAccount ? "sync" : "unsync"}
       </button>
+
       {app.activeAccount && unityContext.send("WalletLoader", "GetWallet", app.address)}
-    </header>   
+
     <div>
     <Unity unityContext={unityContext} style={{
         height: "auto",
@@ -33,6 +41,15 @@ function App() {
       }} />
     </div>
   
+
+    </header>      
+     <div>
+     <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
+    
     </>
     )
 }
