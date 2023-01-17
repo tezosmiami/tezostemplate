@@ -2,7 +2,7 @@ import { useEffect, useState, createContext, useContext} from "react";
 import { TezosToolkit } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
-const hicdex ='https://hdapi.teztools.io/v1/graphql'
+const hicdex ='https://api.hicdex.com/v1/graphql'
 
 const querySubjkt = `
 query Subjkt($address: String!) {
@@ -24,16 +24,17 @@ async function fetchGraphQL(queryObjkts, name, variables) {
   return await result.json()
 }
 
-const UserContext = createContext();
+const TezosContext = createContext();
 const options = {
-  name: 'Tezos Miami'
+  name: 'Tezos Miami',
+  network: 'Mainnet'
  };
   
 const wallet = new BeaconWallet(options);
 
-export const useUserContext = () => {
+export const useTezosContext = () => {
 
-  const app = useContext(UserContext);
+  const app = useContext(TezosContext);
   if (!app) {
     throw new Error(
       `!app`
@@ -42,18 +43,18 @@ export const useUserContext = () => {
   return app;
 };
 
-export const UserContextProvider = ({ children }) => {
+export const TezosContextProvider = ({ children }) => {
   
   const [app, setApp] = useState("");
   const [address, setAddress] = useState("");
   const [tezos, setTezos] = useState(new TezosToolkit("https://mainnet.api.tez.ie"));
-  const [activeAccount, setActiveAccount] = useState("");
-  const [name, setName] = useState("")
+  const [acc, setAcc] = useState("");
+  const [alias, setAlias] = useState("")
 
   useEffect(() => {
-     const getLoggedIn = async () => {
+     const getSynced = async () => {
         if (await wallet?.client?.getActiveAccount()) { 
-          setActiveAccount(await wallet?.client?.getActiveAccount());
+          setAcc(await wallet?.client?.getActiveAccount());
           const address =  await wallet.getPKH();
           setAddress(address);
           tezos.setWalletProvider(wallet);
@@ -64,14 +65,14 @@ export const UserContextProvider = ({ children }) => {
              console.error(errors);
            }
            data?.hic_et_nunc_holder[0]?.name && 
-           setName(data.hic_et_nunc_holder[0].name);
+           setAlias(data.hic_et_nunc_holder[0].name);
           }
       }
     };
-      getLoggedIn();
+      getSynced();
     }, [tezos]);
   
-  async function logIn() {
+  async function sync() {
     app.currentUser && await app.currentUser?.logOut();
     await wallet.client.clearActiveAccount();
     await wallet.client.requestPermissions({
@@ -83,36 +84,36 @@ export const UserContextProvider = ({ children }) => {
     setTezos(tezos)
     let address=await wallet.getPKH()
     setAddress(address);
-    setActiveAccount(await wallet?.client?.getActiveAccount());
+    setAcc(await wallet?.client?.getActiveAccount());
     if(address) {
         const { errors, data } = await fetchGraphQL(querySubjkt, 'Subjkt', { address: address});
      if (errors) {
        console.error(errors);
      }
      if(data?.hic_et_nunc_holder[0]?.name) {
-        setName(data.hic_et_nunc_holder[0].name);
+        setAlias(data.hic_et_nunc_holder[0].name);
       }
     }
    
   }
 
-  async function logOut() {
+  async function unsync() {
     await wallet.client.clearActiveAccount();
-    setActiveAccount("")
+    setAcc("")
     setAddress("");
-    setName("")
+    setAlias("")
     //  window.location.reload();
   }
 
-  const wrapped = { ...app, tezos, logIn, logOut, activeAccount, address, name};
+  const wrapped = { ...app, tezos, sync, unsync, acc, address, alias};
 
   return (
    
-    <UserContext.Provider value={wrapped}>
+    <TezosContext.Provider value={wrapped}>
            {children}
-    </UserContext.Provider>
+    </TezosContext.Provider>
   
   );
 };
 
-export default UserContextProvider;
+export default TezosContextProvider;
