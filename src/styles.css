@@ -15,7 +15,7 @@ header{
     justify-content: flex-end;
     align-items:center;
     width:98vw;
-    height: 108px;
+    /* height: 108px; */
 }
 
 button {
