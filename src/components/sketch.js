@@ -169,6 +169,7 @@ const sketch = (p) => {
         select.value() === 'v.1' ? version = 1 : version = 2
         console.log(select.value())
         p.removeElements()
+        p.preload()
         p.toolBox()
         }
 }
