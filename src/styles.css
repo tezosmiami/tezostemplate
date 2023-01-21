@@ -12,16 +12,16 @@ div{
 header{
     
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items:center;
-    width:100vw;
-    height: 77px;
+    width:98vw;
+    height: 108px;
 }
 
 button {
  
     background-color:transparent;
-    border:none;
+    /* border:none; */
     font-size:18px;
     cursor: pointer;
 }
@@ -33,3 +33,14 @@ a{
 .purple{
     color:purple;
 }
+
+.view {
+    width: 50vw;
+    object-fit: contain;
+    border: 1px solid var(--text);
+    margin-top:22px;
+    overflow-x:auto;
+    padding: 6px;
+    cursor:pointer; 
+    overflow:hidden;
+  }

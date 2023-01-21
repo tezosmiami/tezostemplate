@@ -7,9 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>
-  <TezosContextProvider>
-    <App />
-  </TezosContextProvider>
+    <TezosContextProvider>
+      <App />
+    </TezosContextProvider>
   </BrowserRouter>,
   document.getElementById("root"),
 );

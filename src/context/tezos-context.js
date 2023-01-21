@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext, useContext} from "react";
-import { TezosToolkit } from "@taquito/taquito";
+import { TezosToolkit, OpKind, MichelsonMap } from "@taquito/taquito";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
 const hicdex ='https://api.hicdex.com/v1/graphql'
@@ -26,7 +26,7 @@ async function fetchGraphQL(queryObjkts, name, variables) {
 
 const TezosContext = createContext();
 const options = {
-  name: 'Tezos Miami',
+  name: 'Waffles',
   network: 'Mainnet'
  };
   
@@ -105,7 +105,33 @@ export const TezosContextProvider = ({ children }) => {
     //  window.location.reload();
   }
 
-  const wrapped = { ...app, tezos, sync, unsync, acc, address, alias};
+  const mint = async(metadata, editions, royalties ) => {
+
+     try {
+         const contract = await tezos.wallet
+             .at('KT1Hkg5qeNhfwpKW4fXvq7HGZB9z2EnmCCA9');
+         const operation = await contract.methods.mint_OBJKT(
+            address, 
+            editions,
+            metadata.split('')
+            .reduce(
+              (hex, c) =>
+                (hex += c.charCodeAt(0).toString(16).padStart(2, '0')),
+              ''
+            ),
+            parseFloat(royalties) * 10
+         ).send({amount: 0, storageLimit: 310});
+         await operation.confirmation(1);
+         console.log('Minted');
+         console.log('Operation hash:', operation.hash);
+     } catch(e) {
+         console.log('Error:', e);
+         return false;
+     }
+     return true;
+  };
+
+  const wrapped = { ...app, tezos, sync, unsync, mint, acc, address, alias};
 
   return (
    

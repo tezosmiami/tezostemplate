@@ -1,13 +1,14 @@
-import { useUserContext } from "./context/user-context";
-import { Routes, Route, Link } from "react-router-dom";
-import { About } from './pages/About'
-import { Home } from './pages/Home'
+import React, { useState, useEffect } from 'react'
+import { useTezosContext } from './context/tezos-context';
+import { Mint } from './components/mint'
+import Sketch from "./components/sketch";
 import "./styles.css";
 
-function App() {
 
-  const  app = useTezosContext()
-  
+function App() {
+  const [image, setImage] = useState(null)
+  const [isMint, setIsMint] = useState(false)
+  const app = useTezosContext()
   return(
     <>
       <header>
@@ -15,19 +16,13 @@ function App() {
         target="blank" rel="noopener noreferrer"> 
           {app.alias || app.address.substr(0, 5) + "..." + app.address.substr(-5)}
         </a>}
-        <Link className='purple' to="/about">about</Link>
-        <Link className='purple' to="/">/</Link>
-        <button onClick={() => !app.activeAccount ? app.sync() : app.unSync()}> 
+        &nbsp;
+        <button className='purple' onClick={() => !app.acc ? app.sync() : app.unsync()}> 
           {!app.acc ? "sync" : "unsync"}
         </button>
       </header>  
-    
-     <div>
-     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
+      {isMint ? <Mint image={image} isMint= {isMint} setIsMint={setIsMint} /> :  <Sketch  image={image} setImage={setImage} setIsMint={setIsMint} />}
+  
     </>
     )
 }
