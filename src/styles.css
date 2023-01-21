@@ -37,7 +37,7 @@ a{
 .view {
     width: 50vw;
     object-fit: contain;
-    border: 1px solid var(--text);
+    border: 3px solid black;
     margin-top:22px;
     overflow-x:auto;
     padding: 6px;

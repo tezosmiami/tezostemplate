@@ -95,13 +95,13 @@ export const Mint = ({image, isMint, setIsMint}) => {
                     {(formik) =>
                         <Form className='form' >
                             <div className='formField'>
+                            <span style={{marginLeft:'36px'}}>&nbsp; </span>
                                 <label
                                     className='label'
                                     htmlFor={'title'}
                                     ref={scrollRef}
                                     id='formik'
                                 >Title  </label>
-                                <span style={{marginLeft:'80px'}}>:&nbsp; </span>
                                 <Field
                                     className='fields'
                                     id="title"
@@ -115,11 +115,11 @@ export const Mint = ({image, isMint, setIsMint}) => {
                                 />
                             </div>
                             <div className='formField' >
+                            <span style={{marginLeft:'36px'}}>&nbsp; </span>
                                 <label
                                     className='label'
                                     htmlFor={'description'}
                                 >Description  </label>
-                                <span style={{marginLeft:'15px'}}>:&nbsp; </span>
                                 <Field
                                     className='fields'
                                     id="description"
@@ -133,11 +133,11 @@ export const Mint = ({image, isMint, setIsMint}) => {
                                 />
                             </div>
                             <div className='formField'>
+                            <span style={{marginLeft:'36px'}}>&nbsp; </span>
                                 <label
                                     className='label'
                                     htmlFor={'tags'}
                                 >Tags    </label>
-                                <span style={{marginLeft:'90px'}}>:&nbsp; </span>
                                 <Field
                                     className='fields'
                                     id="tags"
@@ -152,11 +152,11 @@ export const Mint = ({image, isMint, setIsMint}) => {
                                 />
                             </div>
                             <div className='formField'>
+                                 <span style={{marginLeft:'36px'}}>&nbsp; </span>
                                 <label
                                     className='label'
                                     htmlFor={'editions'}
                                 >Editions </label>
-                                <span style={{marginLeft:'47px'}}>:&nbsp; </span>
                                 <Field
                                     className='fields'
                                     id="editions"
@@ -171,11 +171,12 @@ export const Mint = ({image, isMint, setIsMint}) => {
                                 />
                             </div>
                             <div className='formField'>
+                                 <span style={{marginLeft:'36px'}}>&nbsp; </span>
                                 <label
                                     className='label'
                                     htmlFor={'editions'}
+                                    
                                 >Royalties</label>
-                                <span style={{marginLeft:'36px'}}>:&nbsp; </span>
                                 <Field
                                     className='fields'
                                     id="royalties"

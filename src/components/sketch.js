@@ -123,7 +123,7 @@ const sketch = (p) => {
         saveButton = p.createButton(p.a ? "Mint" : "Save");
         saveButton.position(200, 80);
         saveButton.mousePressed(() => {
-            if (address) {    
+            if (p.a) {    
                 setImage(myP5.current.canvas.toDataURL())
                 setIsMint(true)
             }
