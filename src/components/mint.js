@@ -208,7 +208,8 @@ export const Mint = ({image, isMint, setIsMint}) => {
             }
             {isPreview &&
                 <div>
-                    <div style= {{borderBottom: '3px dashed', width: '60%', marginTop: '1px', marginBottom: '18px'}} />
+                    <p/>
+                    <div style= {{borderBottom: '3px dotted', width: '45%', marginTop: '1px', marginBottom: '18px'}} />
                     <ul>
                         <li> Title: {mintPayload.title}</li>
                         <li >Decription: {mintPayload.description}</li>
@@ -218,10 +219,10 @@ export const Mint = ({image, isMint, setIsMint}) => {
                         <li>Created by: {`${app.alias || app.address.substr(0, 4) + ". . ." + app.address.substr(-4)}`}</li>
                         <p/>
                     </ul>
-                
-                    <div style= {{borderBottom: '3px dashed', width: '60%', marginTop: '1px', marginBottom: '18px'}} />
+                    
+                    <div style= {{borderBottom: '3px dotted', width: '45%', marginTop: '1px', marginBottom: '18px'}} />
                     <p/>
-                    <button onClick={()=> handleMint()}> Mint <p/></button>
+                    <button style={{width: '108px'}} onClick={()=> handleMint()}> Mint (hicetnunc)</button><p/>
                         {message} <p/>
                     </div>
          }

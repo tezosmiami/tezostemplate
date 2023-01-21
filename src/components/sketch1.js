@@ -105,24 +105,13 @@ export default ({image, setImage, setIsMint}) => {
         
 	};
 	const draw = (p5) => {
+        p5.imageMode(p5.CENTER)  
         if (p5.mouseIsPressed) {
+            brush = p5.createGraphics(brushSize.value(), brushSize.value());
+            brush.image(currentBrush, 0, 0, brush.width, brush.height);
             p5.tint(255, brushOpacity.value());
-            p5.image(currentBrush, p.mouseX,p. mouseY);
-          }
-        
-        if (p5.mouseIsPressed) {
-            let brush = currentBrush;
-            brush.resize(brushSize.value(), brushSize.value());
             p5.image(brush, p5.mouseX, p5.mouseY);
-          }
-        
-        
-        
-          p5.imageMode (p.CENTER)
-          if (p5.mouseIsPressed) {
-            p5.image(currentBrush, p5.mouseX, p5.mouseY);
-          }
-    } 
+        } 
 	};
 	return <Sketch setup={setup} draw={draw} preload={preload} />;
 }
