@@ -17,7 +17,7 @@ function App() {
           {app.alias || app.address.substr(0, 5) + "..." + app.address.substr(-5)}
         </a>}
         &nbsp;
-        <button className='purple' onClick={() => !app.acc ? app.sync() : app.unsync()}> 
+        <button className='purple' onClick={() => !app.acc ? app.sync() : app.unsync() && setIsMint(false)}> 
           {!app.acc ? "sync" : "unsync"}
         </button>
       </header>  
