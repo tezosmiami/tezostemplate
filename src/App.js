@@ -27,6 +27,11 @@ function App() {
   const app = useTezosContext()
   let width = useWindowWidth()
   
+  useEffect(() => {
+    const favicon = document.getElementById("favicon")
+    favicon.href = `/images/image${Math.floor(Math.random() * 12)}.png`
+  }, [])
+  
   return(
     <>
       <header style={{ height: `${useWindowWidth() < 600 ? '174px' : '144px'}`, 
