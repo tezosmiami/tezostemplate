@@ -151,9 +151,9 @@ const sketch = (p) => {
         brush8 = p.loadImage(`/images/tan.png`);
     }
 	p.setup = () => {
-        p.createCanvas(p.windowWidth, p.windowHeight)
+        p.createCanvas(p.windowWidth, p.windowHeight-(144+offset))
         p.background (230,200,170)       
-        image && p.image(img, 0, 0, p.windowWidth, p.windowHeight);
+        image && p.image(img, 0, 0, p.windowWidth, p.windowHeight-(144+offset));
         p.toolBox()
 	};
     
