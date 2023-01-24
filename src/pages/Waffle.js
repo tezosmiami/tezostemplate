@@ -136,7 +136,7 @@ return(
             <div>{waffle.price > 0 ?
                  <div style={{cursor: 'pointer'}}onClick={handleCollect()}>
                    {`collect for ${waffle.price/1000000}ꜩ`}
-                  <a className='center'>-</a>
+                  <span className='center'>-</span>
                  </div> : ''} 
                  <a href={waffle.platform ==='HEN' ? `https://hicetnunc.miami/objkt/${params.id}` 
                     : waffle.platform === 'VERSUM' ? `https://versum.xyz/token/versum/${params.id}` 
