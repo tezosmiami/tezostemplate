@@ -26,7 +26,7 @@ button {
     cursor: pointer;
 }
 a{
-    color: green;
+    color: black;
     text-decoration:none;
     cursor: pointer;
 }
@@ -37,10 +37,79 @@ a{
 .view {
     width: 50vw;
     object-fit: contain;
-    border: 3px solid black;
+    border: 1px solid black;
     margin-top:22px;
     overflow-x:auto;
     padding: 6px;
     cursor:pointer; 
     overflow:hidden;
+  }
+
+  .grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    align-items: flex-start;
+    flex-direction:row;
+    width: 96vw;
+  }
+  .column {
+  position:relative;
+    background-clip: padding-box;
+  
+  }
+  .column > * {
+    background-clip: padding-box;
+  }
+
+  .center{
+    display:flex;
+    justify-content: center;
+  }
+  .pop{
+    /* flex-direction: row;
+    flex-wrap:wrap; */
+    /* height:360px; */
+    width:90%;
+    object-fit: contain;
+    margin:8px 8px 8px 8px;
+    /* border: 1px solid black; */
+    border-radius: 3%;
+    padding: 6px;
+    cursor:pointer;
+  }
+  .pop:hover{
+    transform: scale(1.011);
+    transition-duration: .3s;
+  }
+
+  .descript{
+    width: 60%; 
+    text-align: justify;
+    word-wrap:break-word;
+    text-justify: inter-word;
+    text-align-last:center;
+  }
+
+  .textWaffle{
+    font-family: 'Julia Mono';
+    font-size:1vw;
+    /* text-align: center; */
+    width:auto;
+    justify-content: center;
+    word-break: keep-all;
+    /* display:block; */
+    white-space: break-spaces;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    padding: 6px;
+    cursor:pointer;
+  }
+  .text:hover{
+    transform: scale(1.011);
+    transition-duration: .3s;
+  }
+
+  .waffle{
+    font-size:33px;
   }

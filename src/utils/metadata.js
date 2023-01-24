@@ -1,6 +1,3 @@
-const axios = require('axios')
-
-
 export const setMetadata = async({values, image}) => {
     const { create } = await import('ipfs-http-client')
     const auth =

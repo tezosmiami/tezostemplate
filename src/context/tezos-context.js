@@ -131,7 +131,33 @@ export const TezosContextProvider = ({ children }) => {
      return true;
   };
 
-  const wrapped = { ...app, tezos, sync, unsync, mint, acc, address, alias};
+  async function collect({swap_id, price, contract, platform}) {
+    try {
+      const interact = await tezos.wallet.at(contract)
+      console.log(platform)
+        const op =  platform === 'VERSUM' ? await interact.methods['collect_swap'](1,swap_id)
+                  : platform === 'HEN' || platform === 'TYPED' ? await interact.methods['collect'](swap_id)
+                  : platform === '8BIDOU' ? await interact.methods['buy'](swap_id, 1, price) 
+                  : platform === 'OBJKT' ? await interact.methods['fulfill_ask'](swap_id)
+                  : 
+ ''
+
+        if(op) {await op.send({
+          amount: price,
+          mutez: true,
+          storageLimit: 310
+      }) 
+      // await op.confirmation(2)}
+    }
+
+    } catch(e) {
+        console.log('Error:', e);
+        return false;
+    }
+    return true;
+};
+
+  const wrapped = { ...app, tezos, sync, unsync, mint, collect, acc, address, alias};
 
   return (
    
