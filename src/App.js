@@ -58,11 +58,11 @@ function App() {
       </header>  
       {isMint ? <Mint image={image} isMint= {isMint} setIsMint={setIsMint} /> :  <Sketch  image={image} setImage={setImage} setIsMint={setIsMint} width={width} />}
       <Routes>
-       <Route path='/'></Route>               
-      <Route path='/waffles' element={<Waffles/>} />
+        <Route path='/' />               
+        <Route path='/waffles' element={<Waffles/>} />
         <Route path=":contract" >
           <Route path=":id" element={<Waffle/>} />
-       </Route>
+        </Route>
       </Routes>
     </>
     )
