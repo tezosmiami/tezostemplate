@@ -123,8 +123,9 @@ return(
              : `https://objkt.com/asset/${params.contract}/${params.id}`} target="blank"  rel="noopener noreferrer">   */}
     <div>
         <span>•</span>
-        <Link to={`/${waffle.minter_profile?.alias || waffle.artist_address}`}>created by:  {waffle.minter_profile?.alias
-               ? waffle.minter_profile?.alias : waffle?.artist_address ? waffle.artist_address?.substr(0, 5) + ". . ." + waffle.artist_address?.substr(-5) :   `${waffle.creators[0]}, ${waffle.creators[1]}`}</Link>
+        {/* <Link to={`${waffle.minter_profile?.alias || waffle.artist_address}`}>created by:  {waffle.minter_profile?.alias
+               ? waffle.minter_profile?.alias : waffle?.artist_address ? waffle.artist_address?.substr(0, 5) + ". . ." + waffle.artist_address?.substr(-5) :   `${waffle.creators[0]}, ${waffle.creators[1]}`}</Link> */}
+       <span>created by:  {waffle.minter_profile?.alias ? waffle.minter_profile?.alias : waffle?.artist_address ? waffle.artist_address?.substr(0, 5) + ". . ." + waffle.artist_address?.substr(-5) :   `${waffle.creators[0]}, ${waffle.creators[1]}`}</span>
         <span>•</span>
         {`${waffle.editions} editions`}
         <span>•</span>
