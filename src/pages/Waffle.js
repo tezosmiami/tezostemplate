@@ -25,6 +25,7 @@ export const Waffle = () => {
           twitter
         }
         price
+        editions
         mime_type
         description
         platform
@@ -113,32 +114,26 @@ return(
       <audio  style={{ margin: '6px'}}src={'https://ipfs.io/ipfs/' + waffle.artifact_uri.slice(7)} controls />
     </div>
     :  waffle.mime_type.includes('text') ? <a className='view' href = {`https://ipfs.io/ipfs/${waffle.artifact_uri.slice(7)}`} target='blank'  rel='noopener noreferrer'><div className='textWaffle'>{waffle.description}</div></a> : null}
-    <div>
-    {/* <div style= {{borderBottom: '6px dotted', width: '63%', marginTop:'33px'}} /> */}
-        
         <p hidden={waffle.mime_type.includes('text')}>{waffle.name} </p>
-       
-         {/* <div style= {{borderBottom: '6px dotted', width: '63%', marginBottom: '27px'}} /> */}
-
-        </div>
-       
-        <p hidden={waffle.mime_type.includes('text')} className='descript'> {waffle.description}</p>
+         {/* <span>•</span> */}
+    <span hidden={waffle.mime_type.includes('text')} className='descript'> {waffle.description}</span>
         {/* {!waffle.mime_type.includes('text') && <div style= {{borderBottom: '6px dotted', width: '63%', margin: '33px'}} />} */}
         {/* <a href={params.contract ==='KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton' ? `https://hicetnunc.miami/waffle/${params.id}` : 
               params.contract === 'KT1LjmAdYQCLBjwv4S2oFkEzyHVkomAf5MrW' ? `https://versum.xyz/token/versum/${params.id}` 
              : `https://objkt.com/asset/${params.contract}/${params.id}`} target="blank"  rel="noopener noreferrer">   */}
-            <div>
-            
-            <Link to={`/${waffle.minter_profile?.alias || waffle.artist_address}`}>created by:  {waffle.minter_profile?.alias
+    <div>
+        <span>•</span>
+        <Link to={`/${waffle.minter_profile?.alias || waffle.artist_address}`}>created by:  {waffle.minter_profile?.alias
                ? waffle.minter_profile?.alias : waffle?.artist_address ? waffle.artist_address?.substr(0, 5) + ". . ." + waffle.artist_address?.substr(-5) :   `${waffle.creators[0]}, ${waffle.creators[1]}`}</Link>
-           {/* <p>[-]</p> */}
-                <p/>
-            <div>{waffle.price > 0 ?
-                 <div style={{cursor: 'pointer'}}onClick={handleCollect()}>
+        <span>•</span>
+        {`${waffle.editions} editions`}
+        <span>•</span>
+        <div>{waffle.price > 0 ?
+            <div style={{cursor: 'pointer'}}onClick={handleCollect()}>
                    {`collect for ${waffle.price/1000000}ꜩ`}
-                  <span className='center'>-</span>
-                 </div> : ''} 
-                 <a href={waffle.platform ==='HEN' ? `https://hicetnunc.miami/objkt/${params.id}` 
+                  <span className='center'>•</span>
+            </div> : ''} 
+            <a href={waffle.platform ==='HEN' ? `https://hicetnunc.miami/objkt/${params.id}` 
                     : waffle.platform === 'VERSUM' ? `https://versum.xyz/token/versum/${params.id}` 
                     : waffle.platform === '8BIDOU' && waffle.eightbid_rgb.length < 800 ? `https://ui.8bidou.com/item/?id=${params.id}` 
                     : waffle.platform === '8BIDOU' &&  waffle.eightbid_rgb.length > 800 ? `https://ui.8bidou.com/item_r/?id=${params.id}` 
@@ -148,15 +143,16 @@ return(
                     {waffle.platform === 'HEN' ? 'H=N' : waffle.platform === "VERSUM" ? waffle.platform 
                     : waffle.platform === '8BIDOU' ? '8BiDOU'
                     : waffle.platform === 'TYPED' ? 'TYPEDART' :'waffle'}</a>
-                </div>
             </div>
+            <span>•</span>
+        </div>
+     
+        <Link className='waffle' to ='/waffles'>
+            {`🧇`}
+            <p/>
+        </Link>
+        {message}
         <p/>
-            <Link className='waffle' to ='/waffles'>
-                {`🧇`}
-                <p/>
-            </Link>
-            {message}<p/>
-
   </>
 )
 }
