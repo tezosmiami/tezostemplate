@@ -143,7 +143,7 @@ return(
                     
                     {waffle.platform === 'HEN' ? 'H=N' : waffle.platform === "VERSUM" ? waffle.platform 
                     : waffle.platform === '8BIDOU' ? '8BiDOU'
-                    : waffle.platform === 'TYPED' ? 'TYPEDART' :'waffle'}</a>
+                    : waffle.platform === 'TYPED' ? 'TYPEDART' :'objkt'}</a>
             </div>
             <span>•</span>
         </div>
