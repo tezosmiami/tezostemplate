@@ -28,6 +28,7 @@ export const getWaffles = gql`
   query objkts ($offset: Int!) {
      waffles: tokens(where: {tags: {tag: {_eq: "wafflesdraw4tezos"}}, editions: {_neq: "0"}, mime_type: {_is_null: false}, fa2_address: {_neq: "KT1EpGgjQs73QfFJs9z7m1Mxm5MTnpC2tqse"}}, offset: $offset, order_by: {minted_at: desc}, limit: 63) {
         mime_type
+        minted_at
         artifact_uri
         display_uri
         fa2_address
@@ -38,6 +39,7 @@ export const getWaffles = gql`
     }
      morewaffles: tokens(where: {tags: {tag: {_eq: "wafflesdraw"}}, editions: {_neq: "0"}, mime_type: {_is_null: false}, fa2_address: {_neq: "KT1EpGgjQs73QfFJs9z7m1Mxm5MTnpC2tqse"}}, offset: $offset, order_by: {minted_at: desc}, limit: 63) {
         mime_type
+        minted_at
         artifact_uri
         display_uri
         fa2_address
@@ -60,7 +62,7 @@ export const Waffles = () => {
    
   if (error) return <div>nada. . .<p/></div>
   if (!data) return <div>. . .<p/></div>
-  else waffles = data.waffles.concat(data.morewaffles)
+  else waffles = data.waffles.concat(data.morewaffles).sort((a,b) => new Date(b.minted_at) - new Date(a.minted_at))
 
     return (
       <>
